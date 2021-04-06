@@ -32,13 +32,24 @@ public class DetailTransaksiServer extends UnicastRemoteObject implements Detail
     }
 
     @Override
-    public List<DetailTransaksiModel> getAll() throws RemoteException {
+    public List<DetailTransaksiModel> getAll(String idTransaksi) throws RemoteException {
        List result = null;
        try {
-           result = DAO.DetailTransaksiDAO.getAll();
+           result = DAO.DetailTransaksiDAO.getAll(idTransaksi);
        } catch (Exception ex) {
            ex.printStackTrace();
        }
        return result;
+    }
+    
+    @Override
+    public long getTotalHargaById(String idTransaksi) throws RemoteException {
+        long result = 0;
+        try {
+            result = DAO.DetailTransaksiDAO.getTotalHargaById(idTransaksi);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return result;
     }
 }

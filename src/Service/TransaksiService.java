@@ -18,7 +18,6 @@ public interface TransaksiService extends Remote {
     public boolean insert(TransaksiModel transaksi) throws RemoteException;
     public boolean delete(String idTransaksi) throws RemoteException;
     public boolean update(TransaksiModel transaksi)throws RemoteException;
-    public List<TransaksiModel> getAll();
-    public long getTotalHargaById(String idTransaksi) throws RemoteException;
+    public List<TransaksiModel> getAll()throws RemoteException;
     public int getTotalBarangById(String idTransaksi) throws RemoteException;
 }

@@ -47,29 +47,6 @@ public class TransaksiDAO {
         
         return listTransaksi;
     }
-    
-    public static long getTotalHargaById(String idTransaksi) {
-       long totalHarga = 0;
-       
-       try {
-           String query = "SELECT SUM(b.jumlah * c.harga) AS \"total_harga\" FROM transaksi a INNER JOIN detail_transaksi b ON a.id = b.id_transaksi LEFT JOIN barang c ON b.id_barang = c.id";
-           query += " WHERE a.id = ?";
-           
-           PreparedStatement ps = Koneksi().prepareStatement(query);
-           ps.setString(1, idTransaksi);
-           ResultSet rs = ps.executeQuery();
-           
-           if (rs.next()) {
-               totalHarga = rs.getInt(1);
-           } 
-       } catch (SQLException se) {
-           se.printStackTrace();
-       } catch (Exception e) {
-           e.printStackTrace();
-       }
-       
-       return totalHarga;
-    }
    
     public static int getTotalBarangById(String idTransaksi) {
        int totalBarang = 0;

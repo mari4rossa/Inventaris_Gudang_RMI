@@ -5,8 +5,11 @@
  */
 package View;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -14,25 +17,20 @@ import java.util.List;
  */
 public class RiwayatTransaksiView extends javax.swing.JPanel {
     List<Model.TransaksiModel> listTransaksi = new ArrayList<>();
-    List<Model.BarangModel> listBarang = new ArrayList<>();
-
-    
     Server.TransaksiServer transaksiServer;
-    Server.DetailTransaksiServer detailTransaksiServer;
     
-    public void bindingTabelTransaksi() {
+    public void bindingTabelTransaksi() throws RemoteException {
         listTransaksi = transaksiServer.getAll();
         
-        Object [][] obj = new Object[listTransaksi.size()][5];
+        Object [][] obj = new Object[listTransaksi.size()][6];
         
         for (int i = 0; i < listTransaksi.size();i++){
-            obj[i][0] = (i+1) + ".";
-            obj[i][1] = listTransaksi.get(i).getId();
-            obj[i][2] = listTransaksi.get(i).getTanggal();
-            obj[i][3] = listTransaksi.get(i).getIdAdmin();
-            obj[i][4] = listTransaksi.get(i).getIdGudang();
-            obj[i][5] = listTransaksi.get(i).getTipe();
-            obj[i][6] = listTransaksi.get(i).getTransfer();
+            obj[i][0] = listTransaksi.get(i).getId();
+            obj[i][1] = listTransaksi.get(i).getTanggal();
+            obj[i][2] = listTransaksi.get(i).getIdAdmin();
+            obj[i][3] = listTransaksi.get(i).getIdGudang();
+            obj[i][4] = listTransaksi.get(i).getTipe();
+            obj[i][5] = listTransaksi.get(i).getTransfer();
         }
         
         tabelRiwayatTransaksi.setModel(
@@ -52,12 +50,23 @@ public class RiwayatTransaksiView extends javax.swing.JPanel {
                 }
             }
         );
+        
+        tabelRiwayatTransaksi.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                int row = tabelRiwayatTransaksi.rowAtPoint(evt.getPoint());
+                int col = tabelRiwayatTransaksi.columnAtPoint(evt.getPoint());
+                if (row >= 0 && col >= 0) {
+                    ////blm tahu
+                }
+            }
+        });
     }
     
     /**
      * Creates new form revisiHistoryTransaksiView
      */
-    public RiwayatTransaksiView() {
+    public RiwayatTransaksiView() throws RemoteException {
         initComponents();
         bindingTabelTransaksi();
     }
@@ -95,6 +104,102 @@ public class RiwayatTransaksiView extends javax.swing.JPanel {
 
         tabelRiwayatTransaksi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -186,7 +291,11 @@ public class RiwayatTransaksiView extends javax.swing.JPanel {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RiwayatTransaksiView().setVisible(true);
+                try {
+                    new RiwayatTransaksiView().setVisible(true);
+                } catch (RemoteException ex) {
+                    Logger.getLogger(RiwayatTransaksiView.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

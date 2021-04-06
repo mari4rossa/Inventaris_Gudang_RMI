@@ -16,5 +16,6 @@ import java.util.List;
  */
 public interface DetailTransaksiService extends Remote {
     public boolean insert(DetailTransaksiModel detailTransaksi) throws RemoteException;
-    public List<DetailTransaksiModel> getAll() throws RemoteException;
+    public List<DetailTransaksiModel> getAll(String idTransaksi) throws RemoteException;
+    public long getTotalHargaById(String idTransaksi) throws RemoteException;
 }

@@ -54,26 +54,16 @@ public class TransaksiServer extends UnicastRemoteObject implements TransaksiSer
     }
 
     @Override
-    public List<TransaksiModel> getAll() {
-        List result = null;
-        try {
-            result = DAO.TransaksiDAO.getAll();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        return result;
+    public List<TransaksiModel> getAll() throws RemoteException {
+       List result = null;
+       try {
+           result = DAO.TransaksiDAO.getAll();
+       } catch (Exception ex) {
+           ex.printStackTrace();
+       }
+       return result;
     }
 
-    @Override
-    public long getTotalHargaById(String idTransaksi) throws RemoteException {
-        long result = 0;
-        try {
-            result = DAO.TransaksiDAO.getTotalBarangById(idTransaksi);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        return result;
-    }
 
     @Override
     public int getTotalBarangById(String idTransaksi) throws RemoteException {
