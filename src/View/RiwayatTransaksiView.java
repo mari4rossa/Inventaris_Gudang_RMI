@@ -16,6 +16,7 @@ import java.util.logging.Logger;
  * @author User
  */
 public class RiwayatTransaksiView extends javax.swing.JPanel {
+    String idTransaksi;
     List<Model.TransaksiModel> listTransaksi = new ArrayList<>();
     Server.TransaksiServer transaksiServer;
     
@@ -57,7 +58,13 @@ public class RiwayatTransaksiView extends javax.swing.JPanel {
                 int row = tabelRiwayatTransaksi.rowAtPoint(evt.getPoint());
                 int col = tabelRiwayatTransaksi.columnAtPoint(evt.getPoint());
                 if (row >= 0 && col >= 0) {
-                    ////blm tahu
+                    try {
+                        idTransaksi = (String) tabelRiwayatTransaksi.getValueAt(tabelRiwayatTransaksi.getSelectedRow(), 0);
+                        RiwayatDetailTransaksiView riwayatDetailTransaksiView = new RiwayatDetailTransaksiView();
+                        riwayatDetailTransaksiView.setVisible(true);
+                    } catch (RemoteException ex) {
+                        Logger.getLogger(RiwayatTransaksiView.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
             }
         });

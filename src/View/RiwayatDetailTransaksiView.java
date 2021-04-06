@@ -22,7 +22,9 @@ public class RiwayatDetailTransaksiView extends javax.swing.JPanel {
     Utility.FormatRupiah formatRupiah = new Utility.FormatRupiah();
     
     public void bindingTabelDetailTransaksi() throws RemoteException {
-        listDetailTransaksi = detailTransaksiServer.getAll();
+        RiwayatTransaksiView aksesId = new RiwayatTransaksiView();
+        
+        listDetailTransaksi = detailTransaksiServer.getAll(aksesId.idTransaksi);
         
         Object [][] obj = new Object[listDetailTransaksi.size()][5];
         
