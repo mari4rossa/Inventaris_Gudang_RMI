@@ -5,17 +5,61 @@
  */
 package View;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author User
  */
 public class RiwayatTransaksiView extends javax.swing.JPanel {
+    List<Model.TransaksiModel> listTransaksi = new ArrayList<>();
+    List<Model.BarangModel> listBarang = new ArrayList<>();
 
+    
+    Server.TransaksiServer transaksiServer;
+    Server.DetailTransaksiServer detailTransaksiServer;
+    
+    public void bindingTabelTransaksi() {
+        listTransaksi = transaksiServer.getAll();
+        
+        Object [][] obj = new Object[listTransaksi.size()][5];
+        
+        for (int i = 0; i < listTransaksi.size();i++){
+            obj[i][0] = (i+1) + ".";
+            obj[i][1] = listTransaksi.get(i).getId();
+            obj[i][2] = listTransaksi.get(i).getTanggal();
+            obj[i][3] = listTransaksi.get(i).getIdAdmin();
+            obj[i][4] = listTransaksi.get(i).getIdGudang();
+            obj[i][5] = listTransaksi.get(i).getTipe();
+            obj[i][6] = listTransaksi.get(i).getTransfer();
+        }
+        
+        tabelRiwayatTransaksi.setModel(
+            new javax.swing.table.DefaultTableModel(
+                obj,
+                new String [] {
+                    "Id","Tanggal", "Admin", "Gudang", "Tipe", "Transfer"
+                }
+            )
+            {
+                boolean[] canEdit = new boolean[]{
+                    false, false, false, false, false, false
+                };
+
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit[columnIndex];
+                }
+            }
+        );
+    }
+    
     /**
-     * Creates new form TransaksiView
+     * Creates new form revisiHistoryTransaksiView
      */
     public RiwayatTransaksiView() {
         initComponents();
+        bindingTabelTransaksi();
     }
 
     /**
@@ -32,7 +76,7 @@ public class RiwayatTransaksiView extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelRiwayatTransaksi = new javax.swing.JTable();
 
         Btn_Back.setText("< Back");
         Btn_Back.addActionListener(new java.awt.event.ActionListener() {
@@ -49,7 +93,7 @@ public class RiwayatTransaksiView extends javax.swing.JPanel {
 
         jLabel1.setText("RIWAYAT TRANSAKSI");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelRiwayatTransaksi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -60,7 +104,7 @@ public class RiwayatTransaksiView extends javax.swing.JPanel {
                 "Id", "Tanggal", "Admin", "Gudang", "Tipe", "Transfer"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabelRiwayatTransaksi);
 
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
         jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
@@ -108,9 +152,44 @@ public class RiwayatTransaksiView extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Btn_BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_BackActionPerformed
-        // TODO add your handling code here:
+        BerandaView berandaView = new BerandaView();
+        berandaView.setVisible(true);
+        //dispose();
     }//GEN-LAST:event_Btn_BackActionPerformed
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(RiwayatTransaksiView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(RiwayatTransaksiView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(RiwayatTransaksiView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(RiwayatTransaksiView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
 
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new RiwayatTransaksiView().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Btn_Back;
@@ -118,6 +197,6 @@ public class RiwayatTransaksiView extends javax.swing.JPanel {
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabelRiwayatTransaksi;
     // End of variables declaration//GEN-END:variables
 }

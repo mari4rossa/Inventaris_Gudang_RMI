@@ -10,6 +10,8 @@ package View;
  * @author User
  */
 public class RiwayatDetailTransaksi extends javax.swing.JPanel {
+    
+    Utility.FormatRupiah formatRupiah = new Utility.FormatRupiah();
 
     /**
      * Creates new form RiwayatDetailTransaksi
