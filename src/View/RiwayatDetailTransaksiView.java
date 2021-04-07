@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author User
+ * @author Maria
  */
 public class RiwayatDetailTransaksiView extends javax.swing.JPanel {
     List<Model.DetailTransaksiModel> listDetailTransaksi = new ArrayList<>();

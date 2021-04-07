@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author User
+ * @author Maria
  */
 public class RiwayatTransaksiView extends javax.swing.JPanel {
     String idTransaksi;

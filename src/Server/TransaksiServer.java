@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  *
- * @author User
+ * @author Maria
  */
 public class TransaksiServer extends UnicastRemoteObject implements TransaksiService{
     public TransaksiServer() throws RemoteException {

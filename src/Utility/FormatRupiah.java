@@ -10,9 +10,12 @@ import java.util.Locale;
 
 /**
  *
- * @author User
+ * @author Maria
  */
 public class FormatRupiah {
+    /**
+     * Berfungsi untuk memformat harga ke dalam rupiah
+     */
     public String kurensi(long uang) {
         NumberFormat kurensiIndonesia = NumberFormat.getCurrencyInstance(new Locale("in","ID"));
         return kurensiIndonesia.format(uang);

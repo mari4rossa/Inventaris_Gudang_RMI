@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  *
- * @author User
+ * @author Maria
  */
 public interface TransaksiService extends Remote {
     public boolean insert(TransaksiModel transaksi) throws RemoteException;

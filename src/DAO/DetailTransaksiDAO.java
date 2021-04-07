@@ -16,9 +16,12 @@ import java.util.List;
 
 /**
  *
- * @author User
+ * @author Maria
  */
 public class DetailTransaksiDAO {
+    /**
+     * Berfungsi untuk menampilkan semua detail transaksi terkait transaksi yang dipilih
+     */
     public static List<DetailTransaksiModel> getAll(String idTransaksi) {
        List<DetailTransaksiModel> listDetailTransaksi = new ArrayList<>();
 
@@ -49,6 +52,9 @@ public class DetailTransaksiDAO {
        return listDetailTransaksi;
     }
     
+    /**
+     * Berfungsi untuk memasukkan detail transaksi saat input transaksi
+     */
     public static boolean insert(DetailTransaksiModel detailTransaksi) {
        try {
            String query = "INSERT INTO detail_transaksi (id, id_transaksi, id_barang, jumlah) VALUES (?, ?, ?, ?)";
@@ -71,6 +77,9 @@ public class DetailTransaksiDAO {
        return false;
     }
     
+    /**
+     * Berfungsi untuk mendapatkan total harga per item
+     */
     public static long getTotalHargaById(String idTransaksi) {
        long totalHarga = 0;
        

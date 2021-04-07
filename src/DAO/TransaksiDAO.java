@@ -18,6 +18,9 @@ import java.util.List;
  * @author Maria
  */
 public class TransaksiDAO {
+    /**
+     * Berfungsi untuk menampilkan semua riwayat transaksi
+     */
     public static List<TransaksiModel> getAll() {
         List<TransaksiModel> listTransaksi = new ArrayList<>();
         
@@ -47,7 +50,10 @@ public class TransaksiDAO {
         
         return listTransaksi;
     }
-   
+    
+    /**
+     * Berfungsi untuk mengambil jumlah seluruh barang per transaksi
+     */
     public static int getTotalBarangById(String idTransaksi) {
        int totalBarang = 0;
        
@@ -71,6 +77,9 @@ public class TransaksiDAO {
        return totalBarang;
     }
     
+    /**
+     * Berfungsi untuk membuat transaksi baru
+     */
     public static boolean insert(TransaksiModel transaksi) {
         try {
             String query = "INSERT INTO transaksi (id, tanggal, id_admin, id_gudang, tipe, transfer) VALUES (?, ?, ?, ?, ?, ?)";
@@ -94,7 +103,10 @@ public class TransaksiDAO {
         
         return false;
     }
-   
+    
+   /**
+     * Berfungsi untuk menghapus transaksi
+     */
     public static boolean delete(String idTransaksi) {
         try {
             String query = "DELETE FROM transaksi WHERE id = ?";
@@ -114,6 +126,9 @@ public class TransaksiDAO {
         return false;
     }
     
+    /**
+     * Berfungsi untuk memperbaharui data transaksi
+     */
     public static boolean update(TransaksiModel transaksi) {
         try {
             String query = "UPDATE transaksi SET tanggal=?, id_admin=?, id_gudang=?, tipe=?, transfer=? WHERE id=?";

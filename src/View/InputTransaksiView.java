@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  *
- * @author User
+ * @author Maria
  */
 public class InputTransaksiView extends javax.swing.JPanel {
     
