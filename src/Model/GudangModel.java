@@ -5,12 +5,14 @@
  */
 package Model;
 
+import java.io.Serializable;
+
 /**
  *
- * @author User
+ * @author Matius Andreatna
  */
-public class GudangModel {
-    private String id, lokasi, idAdmin;
+public class GudangModel implements Serializable {
+    private String id, lokasi, id_admin;
 
     public String getId() {
         return id;
@@ -28,12 +30,13 @@ public class GudangModel {
         this.lokasi = lokasi;
     }
 
-    public String getIdAdmin() {
-        return idAdmin;
+    public String getId_admin() {
+        return id_admin;
     }
 
-    public void setIdAdmin(String idAdmin) {
-        this.idAdmin = idAdmin;
+    public void setId_admin(String id_admin) {
+        this.id_admin = id_admin;
     }
+    
     
 }
